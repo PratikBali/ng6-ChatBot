@@ -1,0 +1,26 @@
+
+<div class=" container">
+
+  <div class=" row justify-content-end">
+    <div class="col-xs-5"></div>
+    <div class=" col-xs-5 ">
+        <h1>My Personal Chat Bot</h1><hr>
+      <ng-container *ngFor="let message of messages | async">
+
+        <div class="message" [ngClass]="{ 'from': message.sentBy === 'bot',
+                                          'to':   message.sentBy === 'user' }">
+          {{ message.content }}
+        </div>
+
+      </ng-container>
+
+
+      <label for="nameField">Your Message</label>
+
+
+      <input [(ngModel)]="formValue" (keyup.enter)="sendMessage()" type="text">
+
+      <button (click)="sendMessage()">Send</button><br>
+    </div>
+  </div><br>
+</div>
